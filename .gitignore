@@ -21,3 +21,10 @@ venv/
 .DS_Store
 .vscode/
 .idea/
+
+# Build artifacts
+build/
+infra/terraform/.build/
+infra/terraform/tfplan
+.pytest_cache/
+.ruff_cache/
