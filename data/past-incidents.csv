@@ -1,0 +1,13 @@
+incident_id,date,service,severity,duration_minutes,root_cause,resolution,preventive_action
+INC-1001,2026-01-14,checkout-api,SEV1,48,Bad release introduced null pointer in payment handler,Rolled back deployment to previous version,Added canary stage and contract tests for payment handler
+INC-1002,2026-02-03,search-service,SEV2,35,OOMKilled pods after cache size increase,Increased memory limit and reduced cache size,Added memory usage alert at 85 percent of limit
+INC-1003,2026-02-21,user-db,SEV2,62,RDS connection exhaustion after scale-out of order-service,Reduced connection pool size and introduced RDS Proxy,Pool size formula added to service template
+INC-1004,2026-03-09,catalog-api,SEV3,25,ImagePullBackOff because CI pipeline failed to push image,Re-ran pipeline and redeployed,Pipeline now blocks deploy if image push fails
+INC-1005,2026-03-27,login-service,SEV1,41,ALB 502 errors because app keep-alive timeout shorter than ALB idle timeout,Increased app keep-alive timeout to 75 seconds,Added keep-alive setting to service checklist
+INC-1006,2026-04-12,notification-service,SEV3,90,Pods pending because node group reached max size,Increased node group maximum and added autoscaler alert,Capacity review added to monthly SRE meeting
+INC-1007,2026-04-30,payments-api,SEV2,55,Expired TLS certificate on internal service,Renewed certificate in ACM and restarted pods,Added certificate expiry alert at 30 days
+INC-1008,2026-05-18,reporting-service,SEV3,120,Long running query locked tables during business hours,Killed the query and moved report to read replica,Reports restricted to read replica and query timeout set
+INC-1009,2026-06-05,checkout-api,SEV1,33,Redis cache failover caused cascading timeouts,Failed over manually and restarted affected pods,Added circuit breaker and retry backoff to checkout client
+INC-1010,2026-06-22,search-service,SEV2,70,CPU saturation on EC2 nodes during traffic spike,Scaled out Auto Scaling group,Lowered target tracking threshold from 70 to 55 percent
+INC-1011,2026-07-15,catalog-api,SEV3,28,CrashLoopBackOff due to missing ConfigMap key after release,Added missing key and restarted deployment,Helm chart validation added to CI
+INC-1012,2026-08-08,login-service,SEV2,45,Security group change blocked ALB to pod traffic,Reverted security group rule via Terraform,Security group changes now require two reviewers

@@ -1,0 +1,23 @@
+# Secrets and credentials
+.env
+*.pem
+*.key
+secrets.json
+credentials
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Terraform (for future use)
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
