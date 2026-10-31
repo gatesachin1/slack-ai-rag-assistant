@@ -8,14 +8,14 @@ The sample dataset is a fictional SRE knowledge base (runbooks, policies, and pa
 
 ```mermaid
 flowchart LR
-    U[Slack user] -->|@mention| L1[Lambda: verify signature and ack in under 3s]
-    L1 -->|async invoke| L2[Lambda worker]
-    L2 -->|RetrieveAndGenerate| KB[Bedrock Knowledge Base]
-    S3[(S3 bucket: documents)] -->|sync| KB
-    KB --> M[Amazon Nova 2 Lite + Guardrails]
+    U["Slack user"] -->|"mentions bot"| L1["Lambda - verifies signature, acknowledges in under 3s"]
+    L1 -->|"async invoke"| L2["Lambda worker"]
+    L2 -->|"RetrieveAndGenerate"| KB["Bedrock Knowledge Base"]
+    S3[("S3 bucket - documents")] -->|"sync"| KB
+    KB --> M["Amazon Nova 2 Lite + Guardrails"]
     M --> L2
-    L2 -->|chat.postMessage| U
-    SM[Secrets Manager] -.->|bot token, signing secret| L1
+    L2 -->|"chat.postMessage"| U
+    SM["Secrets Manager"] -.->|"bot token, signing secret"| L1
 ```
 
 ## Features
