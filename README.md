@@ -31,7 +31,6 @@ flowchart LR
 |---|---|
 | Storage | Amazon S3 |
 | Retrieval | Amazon Bedrock Knowledge Base (vector store) |
-| Embedding model | _add yours here_ |
 | Generation model | Amazon Nova 2 Lite v1 |
 | Safety | Amazon Bedrock Guardrails |
 | Compute | AWS Lambda (Python 3.12) |
@@ -58,12 +57,12 @@ flowchart LR
 
 ### 1. Upload documents to S3
 ```bash
-aws s3 mb s3://<your-bucket-name> --region us-east-1
-aws s3 sync data/ s3://<your-bucket-name>/docs/
+aws s3 mb s3://rag-datasets --region us-east-1
+aws s3 sync data/ s3://rag-datasets/docs/
 ```
 
 ### 2. Create the Bedrock Knowledge Base
-1. In the Bedrock console, create a Knowledge Base with an S3 data source pointing to `s3://<your-bucket-name>/docs/`.
+1. In the Bedrock console, create a Knowledge Base with an S3 data source pointing to `s3://rag-datasets/docs/`.
 2. Choose an embedding model and a vector store.
 3. Click **Sync** on the data source and wait for status **Complete**.
 4. Use **Test knowledge base** to try a few questions.
@@ -120,12 +119,6 @@ A question that is not covered by the documents should return a "could not find 
 
 ## Cost notes
 Some vector stores bill while idle. Delete the Knowledge Base and its vector store when you finish testing.
-
-## Possible improvements
-- Infrastructure as code with Terraform
-- Connect a Kubernetes troubleshooting agent so alerts include runbook steps
-- Track token usage and latency per question in CloudWatch
-- Restrict the bot to specific Slack channels
 
 ## Author
 **Sachin Gate**, DevOps / SRE Engineer, Pune, India
