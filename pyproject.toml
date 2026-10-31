@@ -1,0 +1,21 @@
+[project]
+name = "slack-rag"
+version = "1.0.0"
+description = "Slack RAG assistant on Amazon Bedrock Knowledge Bases"
+requires-python = ">=3.12"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "S", "BLE"]
+ignore = ["BLE001"]  # broad excepts are deliberate in the worker's error-reply path
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101", "S105", "S106"]

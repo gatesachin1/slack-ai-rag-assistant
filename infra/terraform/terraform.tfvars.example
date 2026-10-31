@@ -1,0 +1,17 @@
+aws_region = "us-east-1"
+kb_id      = "XXXXXXXXXX"
+
+# Cross-region inference profile for Nova 2 Lite
+model_arn = "arn:aws:bedrock:us-east-1:123456789012:inference-profile/us.amazon.nova-2-lite-v1:0"
+model_invoke_arns = [
+  "arn:aws:bedrock:us-east-1:123456789012:inference-profile/us.amazon.nova-2-lite-v1:0",
+  "arn:aws:bedrock:*::foundation-model/amazon.nova-2-lite-v1:0",
+]
+
+guardrail_id      = ""
+guardrail_version = "1"
+
+allowed_team_ids    = ["T0123456789"]
+allowed_channel_ids = []
+
+alarm_email = "oncall@example.com"
